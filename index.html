@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="./styles/index.css" rel="stylesheet" type="text/css">
+    </link>
+    <title>Ecommerce Project</title>
+</head>
+
+<body>
+    <header>
+        <nav class="container-fluid navbar d-flex justify-content-spacely align-items-center px-4">
+            <div class="d-flex align-items-center">
+                <a class="navbar-brand me-0" href="./index.html"><i class="fa-solid fa-frog"></i></a>
+                <p class="ms-2 mb-0 fs-5 fw-bold">Shop</p>
+            </div>
+            <p class="mb-0 fs-2"> Menu </p>
+            <div class="sectionCarS">
+                <button class="btn d-flex align-items-center" type="button" disabled>
+                    <i class="fa-solid fa-cart-shopping"> </i>
+                    <p class="countCar fw-bold"> 1 </p>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+
+        <div class="containerImg">
+
+            <div id="carouselControls" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="https://i.ibb.co/C8B8vrc/pexels-mnz-1639729.jpg" class="img d-block w-100"
+                            alt="clothes">
+                        <div class="carousel-caption d-none d-md-block p-0">
+                            <h3 class="m-0 fs-1 fw-bold">Clothing for your best outfits</h3>
+                            <p class="m-0 fs-4">Here are the best designs for you.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://i.ibb.co/kHc976H/pexels-nao-triponez-128621.jpg" class="img d-block w-100"
+                            alt="jewelry">
+                        <div class="carousel-caption d-none d-md-block p-0">
+                            <h3 class="m-0 fs-1 fw-bold"> The best jewelry to wear </h3>
+                            <p class="m-0 fs-4">Unique jewelry that sparkles with you</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://i.ibb.co/BVzFFNF/pexels-johannes-plenio-1105379.jpg" class="img d-block w-100"
+                            alt="electronic">
+                        <div class="carousel-caption d-none d-md-block p-0">
+                            <h3 class="m-0 fs-1 fw-bold"> The best electronic products </h3>
+                            <p class="m-0 fs-4">The highest quality and performance</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselControls"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselControls"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+
+        </div>
+
+        <div id="banners" class="banners d-flex flex-row justify-content-evenly mb-4 flex-wrap">
+
+            <div class="card" style="width: 12rem;" onclick="showProducts('men\'s clothing')">
+                <img src="https://i.ibb.co/x2CRBpR/pexels-mart-production-9558260.jpg" class="card-img-top" alt="...">
+                <div class="card-body text-center ">
+                    <p class="card-text pt-2">Men's Clothing</p>
+                </div>
+            </div>
+            <div class="card" style="width: 12rem;" onclick="showProducts('women\'s clothing')">
+                <img src="https://i.ibb.co/fMjgM32/pexels-mart-production-9558595.jpg" class="card-img-top" alt="...">
+                <div class="card-body text-center ">
+                    <p class="card-text pt-2">Women's Clothing</p>
+                </div>
+            </div>
+            <div class="card" style="width: 12rem;" onclick="showProducts('jewelery')">
+                <img src="https://i.ibb.co/pvJpwmW/pexels-castorly-stock-3640960.jpg" class="card-img-top" alt="...">
+                <div class="card-body text-center ">
+                    <p class="card-text pt-2">Jewelerys</p>
+                </div>
+            </div>
+            <div class="card" style="width: 12rem;" onclick="showProducts('electronics')">
+                <img src="https://i.ibb.co/Rzh3zZz/pexels-jess-bailey-designs-788946.jpg" class="card-img-top"
+                    alt="...">
+                <div class="card-body text-center">
+                    <p class="card-text">Electronics</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="containerFooter d-flex flex-row justify-content-between mx-5 align-items-center">
+            <p class="enterCount m-0"> <a href="./pages/auth.html"> Login / SignUp </a> </p>
+            <div class="social-Media d-flex align-items-center">
+                <p class="m-0"> Contact us </p>
+                <i class="fa-brands fa-facebook"></i>
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-github"></i>
+                <i class="fa-brands fa-twitter"></i>
+                <i class="fa-brands fa-linkedin"></i>
+            </div>
+        </div>
+    </footer>
+
+</body>
+<script src="./scripts/index.js"></script>
+<script src="https://kit.fontawesome.com/8c0752dc6f.js" crossorigin="anonymous"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+</script>
+
+</html>

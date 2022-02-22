@@ -1,0 +1,133 @@
+@import url("https://fonts.googleapis.com/css2?family=Sen&display=swap");
+
+:root {
+  --nav-color: #322c36;
+  --letters-color: #4a4648;
+  --bg-color: #866b82;
+  --button-color: #caabb1;
+  --card-color: #e7d4db;
+  --letter-color: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Sen", sans-serif;
+}
+
+body {
+  width: 100%;
+  background-color: var(--bg-color);
+}
+header,
+main,
+footer {
+  width: 100%;
+  margin: 0 auto;
+}
+header,
+footer {
+  background-color: var(--nav-color);
+  color: var(--letter-color);
+}
+.sectionCarS {
+  cursor: pointer;
+}
+i {
+  cursor: pointer;
+}
+.countCar {
+  border-radius: 16px;
+  background-color: var(--letters-color);
+  padding: 0 8px;
+  color: var(--letter-color)
+}
+
+main {
+  background-color: var(--bg-color);
+}
+form {
+  width:40%;
+  margin: 24px auto;
+}
+.title{
+  font-size: 52px;
+}
+input{
+  margin: 12px;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.divData{
+  width: 100%;
+}
+#sendDataPay{
+  width: 100%;
+  border: none;
+  margin: 12px;
+  padding: 8px;
+  background-color: var(--button-color);
+  border-radius: 12px;
+  font-size: 32px;
+  font-weight: 700;
+  opacity: 50%;
+  color: var(--letters-color);
+  margin-top: 16px;
+}
+#sendDataPay:hover{
+  color: var(--nav-color);
+  opacity: 100%;
+}
+.buttonBack{
+  border: none;
+  margin: 4px;
+  padding: 8px;
+  background-color: var(--button-color);
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--letters-color);
+  margin-top: 12px;
+}
+.buttonBack:hover{
+  background-color: var(--nav-color);
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  color: var(--letter-color);
+}
+footer > div {
+  height: 56.27px;
+  gap: 28px;
+}
+.link {
+  text-decoration: none;
+  color: var(--letter-color);
+}
+.containerFooter {
+  margin-left: 0;
+}
+.enterCount {
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+}
+.social-Media {
+  gap: 12px;
+}
+a{
+  text-decoration: none;
+  color: var(--letters-color);
+  font-weight: 700;
+}
+a:hover{
+  color: var(--letter-color);
+}

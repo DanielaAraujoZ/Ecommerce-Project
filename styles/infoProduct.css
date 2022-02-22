@@ -1,0 +1,147 @@
+@import url("https://fonts.googleapis.com/css2?family=Sen&display=swap");
+
+:root {
+  --nav-color: #322c36;
+  --letters-color: #4a4648;
+  --bg-color: #866b82;
+  --button-color: #caabb1;
+  --card-color: #e7d4db;
+  --letter-color: #ffffff;
+}
+html{
+  height: 100%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Sen", sans-serif;
+}
+
+body {
+  width: 100%;
+  background-color: var(--bg-color);
+  height: 80%;
+}
+header,
+main,
+footer {
+  width: 100%;
+  margin: 0 auto;
+}
+header,
+footer {
+  background-color: var(--nav-color);
+  color: var(--letter-color);
+}
+.sectionCarS {
+  cursor: pointer;
+}
+i {
+  color: white;
+  cursor: pointer;
+}
+.countCar {
+  border-radius: 16px;
+  background-color: var(--letters-color);
+  padding: 0 8px;
+  color: var(--letter-color)
+}
+
+main {
+  background-color: var(--bg-color);
+  width: 90%;
+  height: 80%;
+  margin: auto auto;
+}
+.cont{
+  margin-top: 40px;
+  background-color: var(--button-color);
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+.back {
+  color: var(--letter-color);
+  font-weight: 900;
+  font-size: 24px;
+  text-decoration: none;
+}
+.back:hover {
+  color: var(--letter-color);
+  font-size: 32px;
+}
+.fa-solid {
+  width: 30px;
+}
+.infoProduct {
+  text-align: start;
+  width: 45%;
+  padding: 12px;
+}
+.enterCount > a {
+  color: var(--letter-color);
+  text-decoration: none;
+}
+
+.priceCar {
+  width: 100%;
+}
+#inputAddCountProduct {
+  width: 10%;
+  font-size: 32px;
+  text-align: center;
+  border-radius: 8px;
+  border: 1px solid var(--bg-color);
+  color: var(--letters-color);
+  font-weight: 600;
+  padding: 4px;
+  appearance: none;
+}
+#buttonAddCountProduct {
+  border: none;
+  width: 80%;
+  margin-left: 12px;
+  background-color: var(--bg-color);
+  color: var(--letter-color);
+  font-size: 24px;
+  font-weight: 700;
+  padding: 8px;
+  border-radius: 8px;
+}
+#buttonAddCountProduct:hover{
+    color: var(--nav-color);
+    font-weight: 900;
+    border: 2px solid var(--letters-color);
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  color: var(--letter-color);
+}
+footer > div {
+  height: 56.27px;
+  gap: 28px;
+}
+.link {
+  text-decoration: none;
+  color: var(--letter-color);
+}
+.containerFooter {
+  margin-left: 0;
+}
+.enterCount {
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+}
+.social-Media {
+  gap: 12px;
+}

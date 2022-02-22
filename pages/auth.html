@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="../styles/auth.css" type="text/css">
+    <title>Authentication page </title>
+</head>
+
+<body>
+
+    <header>
+        <nav class="container-fluid navbar d-flex justify-content-spacely align-items-center px-4">
+            <div class="d-flex align-items-center">
+                <a class="navbar-brand me-0" href="../../index.html"><i class="fa-solid fa-frog"></i></a>
+                <p class="ms-2 mb-0 fs-5 fw-bold">Shop</p>
+            </div>
+            <p class="mb-0 fs-2"> Authentication </p>
+            <div class="sectionCarS">
+                <button class="btn d-flex align-items-center" type="button" disabled>
+                    <i class="fa-solid fa-cart-shopping"> </i>
+                    <p class="countCar fw-bold" id="numberCount"> 1 </p>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="d-flex flex-wrap justify-content-center gap-4">
+        <div class="signUp d-flex align-items-center justify-content-center flex-column mt-4">
+            <h1 class="fw-bold text-center mb-4">SIGN UP</h1>
+            <form class="d-flex flex-column" id="formSignUp">
+                <div class="contAuth">
+                    <label for="name" class="my-1">Name </label>
+                    <input type="text" class="form-control" id="name" placeholder="Alexandra" required />
+                </div>
+                <div class="contAuth">
+                    <label for="lastName" class="my-1">Last Name</label>
+                    <input size="4" type="text" class="form-control" id="lastName" placeholder="Arango" required />
+                </div>
+                <div class="contAuth">
+                    <label for="emailS" class="my-1">Email</label>
+                    <input type="email" class="form-control" id="emailS" placeholder="alexF08@gmail.com" required />
+                </div>
+                <div class="contAuth">
+                    <label for="passwordS" class="my-1">Password</label>
+                    <input type="password" class="form-control" id="passwordS" placeholder="**************" required />
+                </div>
+                <button type="submit" id="signUpButton" class="btn btnSend mt-4">
+                    SignUp
+                </button>
+            </form>
+        </div>
+        <div class="logIn d-flex align-items-center justify-content-center flex-column mt-4">
+            <form class="d-flex flex-column">
+                <h1 class="fw-bold text-center mb-4">LOGIN</h1>
+                <div class="contAuth">
+                    <label for="emailL" class="my-1">Email </label>
+                    <input type="email" class="form-control" id="emailL" placeholder="alexF08@gmail.com" required />
+                </div>
+                <div class="contAuth">
+                    <label for="passwordL" class="my-1">Password</label>
+                    <input size="4" type="password" class="form-control" id="passwordL" placeholder="**************"
+                        required />
+                </div>
+                <button type="button" id="logInButton" class="btn btnSend mt-4">
+                    LogIn
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <div class="containerFooter d-flex flex-row justify-content-between mx-5 align-items-center">
+            <div class="d-flex align-items-center gap-2">
+                <i class="fa-solid fa-angle-left"></i>
+                <a href="./allProducts.html"> <p class="enterCount m-0"> Back Categories Page </p> </a>
+            </div>
+
+            <div class="social-Media d-flex align-items-center">
+                <p class="m-0"> Contact us </p>
+                <i class="fa-brands fa-facebook"></i>
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-github"></i>
+                <i class="fa-brands fa-twitter"></i>
+                <i class="fa-brands fa-linkedin"></i>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+<script src="https://kit.fontawesome.com/8c0752dc6f.js" crossorigin="anonymous"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+</script>
+
+</html>

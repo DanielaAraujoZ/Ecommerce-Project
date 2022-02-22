@@ -1,0 +1,133 @@
+@import url("https://fonts.googleapis.com/css2?family=Sen&display=swap");
+
+:root {
+  --nav-color: #322c36;
+  --letters-color: #4a4648;
+  --bg-color: #866b82;
+  --button-color: #caabb1;
+  --card-color: #e7d4db;
+  --letter-color: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Sen", sans-serif;
+}
+
+body {
+  width: 100%;
+  background-color: var(--bg-color);
+}
+header,
+main, footer {
+  width: 100%;
+  margin: 0 auto;
+}
+header,
+footer {
+  background-color: var(--nav-color);
+  color: var(--letter-color);
+}
+
+i {
+  cursor: pointer;
+}
+.fa-cart-shopping, .navbar-brand{
+  color: var(--letter-color);
+}
+.navbar-brand:hover{
+  color: var(--letter-color);
+}
+.countCar {
+  border-radius: 16px;
+  background-color: var(--letters-color);
+  padding: 0 8px;
+  color: var(--letter-color)
+}
+
+main {
+  background-color: var(--bg-color);
+}
+.products{
+    gap: 32px;
+}
+.itemList{
+  color: var(--letters-color);
+  font-weight: 700;
+  cursor: pointer;
+}
+.itemList:hover{
+  font-size: 28px;
+}
+.itemList:active{
+  color: var(--nav-color);
+  text-decoration: underline;
+}
+.card{
+  background-color: var(--card-color);
+  border-radius: 12px;
+}
+.card > img{
+  border-radius: 12px 12px 0 0;
+}
+.card-text{
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
+}
+.card-img-top{
+  width: 75%;
+  margin: 4px auto;
+  height: 70%;
+}
+.fa-star{
+  color: var(--nav-color);
+}
+.btnSend{
+  background-color: var(--button-color);
+  width: 100%;
+  font-weight: 700;
+  border-radius: 12px;
+  color: var(--nav-color);
+}
+.btnSend:hover{
+  opacity: 80%;
+  color: var(--letters-color);
+}
+a{
+  text-decoration: none;
+  color: var(--nav-color);
+}
+a:hover{
+  color: var(--nav-color);
+}
+footer {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  color: var(--letter-color);
+}
+footer > div {
+  height: 56.27px;
+  gap: 28px;
+}
+.link {
+  text-decoration: none;
+  color: var(--letter-color);
+}
+.containerFooter {
+  margin-left: 0;
+}
+.enterCount {
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+}
+.enterCount > a {
+  color: var(--letter-color);
+}
+.social-Media {
+  gap: 12px;
+}
