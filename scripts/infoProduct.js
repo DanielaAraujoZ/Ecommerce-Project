@@ -16,6 +16,4 @@ function showDetail() {
 
 window.addEventListener("DOMContentLoaded", showDetail());
 
-function addCartProduct(){
-  
-}
+// function addCartProduct(){}

@@ -1,3 +1,4 @@
+const server = "https://ecommerce-project-geek.herokuapp.com/dataUsers" //Servidor Heroku
 const baseUrlApi = "https://fakestoreapi.com/products" //URL con todos los datos
 const div = document.getElementById('banners')
 
