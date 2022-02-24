@@ -1,4 +1,5 @@
-const server = "https://ecommerce-project-geek.herokuapp.com/dataUsers"; //Servidor Heroku
+const serverUser = "https://ecommerce-project-geek.herokuapp.com/dataUsers"; //Servidor Heroku
+const serverInfoShop = "https://ecommerce-project-geek.herokuapp.com/infoBuy"; //Servidor con info del Usuario para almacenar datos de sus compras
 const baseUrlApi = "https://fakestoreapi.com/products"; //URL con todos los datos
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -29,12 +30,12 @@ formSignUp.addEventListener("submit", async (e) => {
   const emailS = document.getElementById("emailS").value;
   const passwordS = document.getElementById("passwordS").value;
 
-  let data = await getData(server);
+  let data = await getData(serverUser);
   let duplicateEmail = data.find((item) => item.emailS == emailS);
 
   if (duplicateEmail == undefined) {
     //Se envían datos a Heroku.
-    fetch(server, {
+    fetch(serverUser, {
       method: "POST",
       body: JSON.stringify({
         name,
@@ -46,7 +47,6 @@ formSignUp.addEventListener("submit", async (e) => {
         "Content-type": "application/json; charset=UTF-8",
       },
     }).then((respond) => respond);
-
     //Notifica el éxito de la operacion al usuario
     Swal.fire({
       position: "top-center",
@@ -76,31 +76,42 @@ formLogin.addEventListener("submit", async (e) => {
   const emailL = document.getElementById("emailL").value;
   const passwordL = document.getElementById("passwordL").value;
 
-  let data = await getData(server);
+  let data = await getData(serverUser);
   let infoCompare = data.filter(
     (item) => item.emailS === emailL && item.passwordS === passwordL
   );
 
   if (infoCompare[0] !== undefined) {
+    const dataUser = {
+      name: infoCompare[0].name,
+      email: emailL,
+    };
     Swal.fire({
-      position: "top-center",
+      position: "center",
       icon: "success",
       title: "Thank you for logging in!",
       text: "You will be redirected to the page with all our products in a few seconds.",
       showConfirmButton: false,
     });
-    setTimeout(()=> {
-        window.location.href = "../pages/allProducts.html"
-        localStorage.setItem('NAMEUSERLOGIN', JSON.stringify(infoCompare[0].name))
-    },5000)
+    // fetch(serverInfoShop, {
+    //   method: "POST",
+    //   body: JSON.stringify({
+    //     emailL,
+    //   }),
+    //   headers: {
+    //     "Content-type": "application/json; charset=UTF-8",
+    //   },
+    // }).then((respond) => respond);
+    setTimeout(() => {
+      window.location.href = "../pages/allProducts.html";
+      localStorage.setItem("INFOUSERLOGIN", JSON.stringify(dataUser));
+    }, 5000);
   } else {
     Swal.fire({
-        icon: "error",
-        title: "Sorry. We have not found your data in our database.",
-        text: "Try to register if you have not already done so.",
-      });
+      icon: "error",
+      title: "Sorry. We have not found your data in our database.",
+      text: "Try to register if you have not already done so.",
+    });
   }
-  formLogin.reset()
+  formLogin.reset();
 });
-
-

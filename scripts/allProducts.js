@@ -1,7 +1,7 @@
 const baseUrlApi = "https://fakestoreapi.com/products";
 const dataLocalStorage = JSON.parse(localStorage.getItem("CATEGORYSHOW"));
 const sectionProducts = document.getElementById("products");
-const userLogIn = JSON.parse(localStorage.getItem('NAMEUSERLOGIN'))
+const userLogIn = JSON.parse(localStorage.getItem('INFOUSERLOGIN'))
 
 async function getData(url) {
   try {
@@ -68,9 +68,9 @@ const changeTagA = document.getElementById('changeTagA')
 const sectionNameUser = document.getElementById('sectionNameUser')
 const cartShop = document.getElementById('cartShop')
 
-if(userLogIn.length > 0){
+if(Object.keys(userLogIn).length > 0){
   sectionNameUser.innerHTML = `
-  <p class="nameUser text-center m-0 fw-bold fs-3"> ¡Bievenid@ ${userLogIn}! </p>`
+  <p class="nameUser text-center m-0 fw-bold fs-3"> ¡Bievenid@ ${userLogIn.name}! </p>`
   changeTagA.innerHTML = `<button id="buttonLogOut" onclick="logOut()"> Log out </button>`
   cartShop.removeAttribute('disabled')
 }
@@ -78,13 +78,13 @@ if(userLogIn.length > 0){
 //AL dar click en el botón logout, eliminará el estado anterior volviendo al inicial.
 function logOut(){
   Swal.fire({
-    position: 'top-center',
+    position: 'center',
     icon: 'success',
     title: 'Your session has been closed',
     showConfirmButton: false,
     timer: 1500
   })
-  localStorage.removeItem('NAMEUSERLOGIN')
+  localStorage.removeItem('INFOUSERLOGIN')
   changeTagA.innerHTML = `
   <a href="./auth.html"> Login / SignUp </a>`
   sectionNameUser.innerHTML = ""
