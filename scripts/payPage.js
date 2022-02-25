@@ -1,0 +1,1 @@
+const detailBuy = JSON.parse(localStorage.getItem('DETAILBUY'))

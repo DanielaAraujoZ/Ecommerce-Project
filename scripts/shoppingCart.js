@@ -3,6 +3,7 @@ const baseURL = "https://fakestoreapi.com/products";
 const userLogIn = JSON.parse(localStorage.getItem("INFOUSERLOGIN"));
 const bodyTable = document.getElementById("bodyTable");
 const totalPay = document.getElementById("totalPay");
+const sendPay = document.getElementById('sendPay')
 
 //Para botón de bienvenida de usuario y boton LogOut
 const changeTagA = document.getElementById("changeTagA");
@@ -48,7 +49,7 @@ async function showInfoShopping() {
     (item) => item.email === userLogIn.email
   );
   let sumValues = [];
-
+  let countProducts = []
   infoUserFilter.map((item, index) => {
     const { image, title, price, quantity } = item;
     bodyTable.innerHTML += `
@@ -60,25 +61,38 @@ async function showInfoShopping() {
              <p class="mt-2  text-decoration-underline"> ${title} </p>
          </td>
          <td> ${quantity} </td>
-         <td>$${price}</td>
-         <td class="priceTotal">$ ${quantity * price}</td>
+         <td>$${price}USD </td>
+         <td class="fw-bold">$ ${quantity * price}USD</td>
      </tr>
  `;
     sumValues.push(quantity * price);
+    countProducts.push(quantity)
   });
+  let sumTotal = sumValues.reduce((prev, current) => prev + current)
   totalPay.innerHTML = `
                     <tr class="align-middle fs-2">
                         <th colspan="4" class="text-end">
                             Total
                         </th>
-                        <td colspan="1" class="text-center">$${sumValues.reduce((prev, current) => prev + current)} </td>
+                        <td colspan="1" class="text-center fw-bolder">$${sumTotal.toFixed(2)}USD</td>
                     </tr>
                     <tr class="align-middle fs-2">
                         <td colspan="5" class="text-end">
-                            <button type="button" id="sendPay"> Pay All </button>    
+                            <button type="button" id="sendPay" onclick="payAll()"> Pay All </button>    
                         </td>
                     </tr>
   `;
+  let detailBuy = {
+      email: userLogIn.email,
+      priceBuy: sumTotal,
+      totalProducts: countProducts.reduce((prev, current) => prev + current)
+  }
+  localStorage.setItem('DETAILBUY', JSON.stringify(detailBuy))
 }
 
 window.addEventListener("DOMContentLoad", showInfoShopping());
+
+function payAll(){
+    window.location.href = "../pages/payPage.html"
+}
+
