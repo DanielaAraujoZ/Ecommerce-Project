@@ -2,8 +2,10 @@ const dataLocalStorage = JSON.parse(localStorage.getItem("DETAILPRODUCT"));
 const sectionImage = document.getElementById("sectionImage");
 const sectionDetail = document.getElementById("sectionDetail");
 const userLogIn = JSON.parse(localStorage.getItem("INFOUSERLOGIN"));
+let numberCount = JSON.parse(localStorage.getItem("COUNTPRODUCTS"));
 const baseURL = "https://fakestoreapi.com/products";
 const serverInfoShop = "https://ecommerce-project-geek.herokuapp.com/infoBuy";
+const cartShop = document.getElementById("cartShop");
 
 function showDetail() {
   const { title, price, description, image, id } = dataLocalStorage[0];
@@ -12,9 +14,16 @@ function showDetail() {
      <h2 class="fw-bold"> $ ${price} USD </h2>
      <p class="mt-1 lh-sm text-justify"> ${description}  </p>
      <div class="priceCar d-flex justify-content-center mt-3 mb-3">
+        <form>
          <input type="number" id="inputAddCountProduct" placeholder="1" value="1" required>
          <button type="button" id="buttonAddCountProduct" onclick="addCartProduct(${id})"> Add to cart </button>
+        </form>
      </div> `;
+
+  cartShop.innerHTML = `
+      <i class="fa-solid fa-cart-shopping"> </i>
+      <p class="countCar fw-bold"> ${numberCount} </p>
+`;
 }
 
 window.addEventListener("DOMContentLoaded", showDetail());
@@ -23,7 +32,7 @@ window.addEventListener("DOMContentLoaded", showDetail());
 //Valida dato de usuario guardado en el localStorage para cambiar el footer.
 const changeTagA = document.getElementById("changeTagA");
 const sectionNameUser = document.getElementById("sectionNameUser");
-const cartShop = document.getElementById("cartShop");
+
 if (Object.keys(userLogIn).length > 0) {
   sectionNameUser.innerHTML = `
   <p class="nameUser text-center m-0 fw-bold fs-3"> ¡Bievenid@ ${userLogIn.name}! </p>`;
@@ -44,6 +53,12 @@ function logOut() {
   <a href="./auth.html"> Login / SignUp </a>`;
   sectionNameUser.innerHTML = "";
   cartShop.disabled = true;
+  cartShop.innerHTML = `
+      <i class="fa-solid fa-cart-shopping"> </i>
+      <p class="countCar fw-bold"> 0 </p>
+`;
+  Storage.clear();
+  localStorage.removeItem('COUNTPRODUCTS')
 }
 
 //Buscar id en el api
@@ -57,14 +72,11 @@ async function getData(url) {
     return console.log(error);
   }
 }
-  
+
 //Función a ejecutar con evento click del boton add to cart
 async function addCartProduct(id) {
-
-  let dataID = await getData(baseURL)
-  let dataSend = dataID.filter((item) => item.id == id)
-  
-  console.log(id);
+  let dataID = await getData(baseURL);
+  let dataSend = dataID.filter((item) => item.id == id);
   if (userLogIn == null) {
     Swal.fire({
       icon: "info",
@@ -72,17 +84,19 @@ async function addCartProduct(id) {
         "You must be logged in before adding products to your shopping cart.",
     });
   } else {
-    const { image,title,price } = dataSend[0]
-    const quantityProduct = document.getElementById('inputAddCountProduct').value;    
+    const { image, title, price } = dataSend[0];
+    const quantityProduct = document.getElementById(
+      "inputAddCountProduct"
+    ).value;
     fetch(serverInfoShop, {
       method: "POST",
       body: JSON.stringify({
         email: userLogIn.email,
         idProduct: id,
         quantity: parseInt(quantityProduct),
-        image: image, 
-        title: title, 
-        price: price
+        image: image,
+        title: title,
+        price: price,
       }),
       headers: {
         "Content-type": "application/json; charset=UTF-8",
@@ -94,4 +108,21 @@ async function addCartProduct(id) {
       text: "Product was added to your shopping cart!",
     });
   }
+  setTimeout(async () => {
+    let sumProducts;
+    let arrayNumbers = [];
+    let quantity = await getData(serverInfoShop);
+    let filterInfo = quantity.filter((item) => item.email == userLogIn.email);
+
+    filterInfo.map((item) => {
+      arrayNumbers.push(item.quantity);
+    });
+    sumProducts = arrayNumbers.reduce((prev, current) => prev + current);
+    localStorage.setItem("COUNTPRODUCTS", JSON.stringify(sumProducts));
+    let count = JSON.parse(localStorage.getItem("COUNTPRODUCTS"));
+    cartShop.innerHTML = `
+        <i class="fa-solid fa-cart-shopping"> </i>
+        <p class="countCar fw-bold"> ${count} </p>
+`;
+  }, 4000);
 }

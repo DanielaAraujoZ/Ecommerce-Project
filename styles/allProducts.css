@@ -131,3 +131,15 @@ footer > div {
 .social-Media {
   gap: 12px;
 }
+#buttonLogOut{
+  background-color: var(--button-color);
+  border: none;
+  padding: 8px 9px;
+  border-radius: 8px;
+  color: var(--letter-color);
+  font-weight: 700;
+  font-size: 16px;
+}
+#buttonLogOut:hover{
+  color: var(--letters-color);
+}

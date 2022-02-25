@@ -1,14 +1,15 @@
 const serverInfoShop = "https://ecommerce-project-geek.herokuapp.com/infoBuy";
 const baseURL = "https://fakestoreapi.com/products";
 const userLogIn = JSON.parse(localStorage.getItem("INFOUSERLOGIN"));
+let numberCount = JSON.parse(localStorage.getItem("COUNTPRODUCTS"));
 const bodyTable = document.getElementById("bodyTable");
 const totalPay = document.getElementById("totalPay");
 const sendPay = document.getElementById("sendPay");
+const cartShop = document.getElementById("cartShop");
 
 //Para botón de bienvenida de usuario y boton LogOut
 const changeTagA = document.getElementById("changeTagA");
 const sectionNameUser = document.getElementById("sectionNameUser");
-const cartShop = document.getElementById("cartShop");
 if (Object.keys(userLogIn).length > 0) {
   sectionNameUser.innerHTML = `
   <p class="nameUser text-center m-0 fw-bold fs-3"> ¡Bievenid@ ${userLogIn.name}! </p>`;
@@ -17,6 +18,8 @@ if (Object.keys(userLogIn).length > 0) {
 }
 //AL dar click en el botón logout, eliminará el estado anterior volviendo al inicial.
 function logOut() {
+  Storage.clear();
+  localStorage.removeItem("COUNTPRODUCTS");
   Swal.fire({
     position: "top-center",
     icon: "success",
@@ -29,6 +32,10 @@ function logOut() {
   <a href="./auth.html"> Login / SignUp </a>`;
   sectionNameUser.innerHTML = "";
   cartShop.disabled = true;
+  cartShop.innerHTML = `
+      <i class="fa-solid fa-cart-shopping"> </i>
+      <p class="countCar fw-bold"> 0 </p>
+`;
 }
 
 //Obtiene datos del API.
@@ -52,6 +59,7 @@ async function showInfoShopping() {
   let countProducts = [];
   infoUserFilter.map((item, index) => {
     const { image, title, price, quantity } = item;
+    let subtotal = quantity * price;
     bodyTable.innerHTML += `
      <tr class="align-middle fs-4">
          <th scope="row">${index + 1}</th>
@@ -62,7 +70,7 @@ async function showInfoShopping() {
          </td>
          <td> ${quantity} </td>
          <td>$${price}USD </td>
-         <td class="fw-bold">$ ${quantity * price}USD</td>
+         <td class="fw-bold">$ ${subtotal.toFixed(2)}USD</td>
      </tr>
  `;
     sumValues.push(quantity * price);
@@ -88,6 +96,10 @@ async function showInfoShopping() {
     totalProducts: countProducts.reduce((prev, current) => prev + current),
   };
   localStorage.setItem("DETAILBUY", JSON.stringify(detailBuy));
+  cartShop.innerHTML = `
+      <i class="fa-solid fa-cart-shopping"> </i>
+      <p class="countCar fw-bold"> ${numberCount} </p>
+`;
 }
 
 window.addEventListener("DOMContentLoad", showInfoShopping());

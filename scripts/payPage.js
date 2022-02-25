@@ -1,14 +1,16 @@
 const detailBuy = JSON.parse(localStorage.getItem("DETAILBUY"));
 const userLogIn = JSON.parse(localStorage.getItem("INFOUSERLOGIN"));
+let numberCount = JSON.parse(localStorage.getItem("COUNTPRODUCTS"));
 const serverPay = "https://ecommerce-project-geek.herokuapp.com/infoPay";
 const offcanvasBody = document.getElementById("offcanvas-body");
 const formBuy = document.getElementById("formBuy");
+const cartShop = document.getElementById("cartShop");
 
 //Misma función de allProducts.
 //Valida dato de usuario guardado en el localStorage para cambiar el footer.
 const changeTagA = document.getElementById("changeTagA");
 const sectionNameUser = document.getElementById("sectionNameUser");
-const cartShop = document.getElementById("cartShop");
+
 if (Object.keys(userLogIn).length > 0) {
   sectionNameUser.innerHTML = `
   <p class="nameUser text-center m-0 fw-bold fs-3"> ¡Bievenid@ ${userLogIn.name}! </p>`;
@@ -29,6 +31,11 @@ function logOut() {
   <a href="./auth.html"> Login / SignUp </a>`;
   sectionNameUser.innerHTML = "";
   cartShop.disabled = true;
+  cartShop.innerHTML = `
+      <i class="fa-solid fa-cart-shopping"> </i>
+      <p class="countCar fw-bold"> 0 </p>
+`;
+Storage.clear()
 }
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -43,6 +50,10 @@ window.addEventListener("DOMContentLoaded", () => {
             <p class="fw-bold"> STATE: PENDING PAYMENT </p>
         </div>
     `;
+    cartShop.innerHTML = `
+      <i class="fa-solid fa-cart-shopping"> </i>
+      <p class="countCar fw-bold"> ${numberCount} </p>
+`;
 });
 
 formBuy.addEventListener("submit", (e) => {
@@ -93,8 +104,7 @@ formBuy.addEventListener("submit", (e) => {
       }).then((respond) => respond);
       document.getElementById('sectionStatePay').innerHTML = ''
       document.getElementById('sectionStatePay').innerHTML += 
-      ` <p class="fw-bold"> STATE: PENDING PAYMENT </p> `
+      ` <p class="fw-bold"> STATE: SUCCESSFUL PAYMENT </p> `
   }
-
   formBuy.reset()
 });
