@@ -44,6 +44,10 @@ i {
   padding: 0 8px;
   color: var(--letter-color)
 }
+#changeTagA >a {
+  color: var(--letter-color);
+  text-decoration: none;
+}
 
 main {
   background-color: var(--bg-color);

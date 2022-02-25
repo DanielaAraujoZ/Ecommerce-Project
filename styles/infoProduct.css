@@ -35,8 +35,8 @@ footer {
   background-color: var(--nav-color);
   color: var(--letter-color);
 }
-.sectionCarS {
-  cursor: pointer;
+.sectionCarS > a{
+  text-decoration: none;
 }
 i {
   color: white;

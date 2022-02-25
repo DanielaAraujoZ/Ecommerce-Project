@@ -43,7 +43,15 @@ i {
   padding: 0 8px;
   color: var(--letter-color)
 }
-
+.detailsButton{
+  background-color: var(--button-color);
+  color: var(--letter-color);
+  font-weight: 700;
+  border: 1px solid var(--card-color);
+  position: relative;
+  left: 50px;
+  top: 30px;
+}
 main {
   background-color: var(--bg-color);
 }
@@ -125,9 +133,21 @@ footer > div {
 }
 a{
   text-decoration: none;
-  color: var(--letters-color);
+  color:  var(--letter-color);
   font-weight: 700;
 }
 a:hover{
   color: var(--letter-color);
+}
+#buttonLogOut{
+  background-color: var(--button-color);
+  border: none;
+  padding: 8px 9px;
+  border-radius: 8px;
+  color: var(--letter-color);
+  font-weight: 700;
+  font-size: 16px;
+}
+#buttonLogOut:hover{
+  color: var(--letters-color);
 }

@@ -32,7 +32,6 @@ function logOut() {
 }
 
 window.addEventListener("DOMContentLoaded", () => {
-  console.log(detailBuy);
   offcanvasBody.innerHTML += `
         <div>
             <p class="m-0"> Hello Daniela! </p>
@@ -40,40 +39,62 @@ window.addEventListener("DOMContentLoaded", () => {
             <p> Quantity of products: ${detailBuy.totalProducts} </p>
             <p> Total payable: ${detailBuy.priceBuy.toFixed(2)} </p>
         </div>
-        <div>
+        <div id="sectionStatePay">
             <p class="fw-bold"> STATE: PENDING PAYMENT </p>
         </div>
     `;
 });
 
 formBuy.addEventListener("submit", (e) => {
-  e.preventDefault()
-  const name = document.getElementById("name").value;
+  e.preventDefault();
   const email = document.getElementById("email").value;
   const numberCard = document.getElementById("numberCard").value;
   const dataExp = document.getElementById("dataExp").value;
   const cvv = document.getElementById("cvv").value;
 
-  let timerInterval;
-  Swal.fire({
-    title: "Auto close alert!",
-    html: "I will close in <b></b> milliseconds.",
-    timer: 2000,
-    timerProgressBar: true,
-    didOpen: () => {
-      Swal.showLoading();
-      const b = Swal.getHtmlContainer().querySelector("b");
-      timerInterval = setInterval(() => {
-        b.textContent = Swal.getTimerLeft();
-      }, 100);
-    },
-    willClose: () => {
-      clearInterval(timerInterval);
-    },
-  }).then((result) => {
-    /* Read more about handling dismissals below */
-    if (result.dismiss === Swal.DismissReason.timer) {
-      console.log("I was closed by the timer");
-    }
-  });
+  if (email.toLowerCase() !== userLogIn.email.toLowerCase()) {
+    Swal.fire({
+      icon: "error",
+      title: "Error!",
+      text: "The payment email and the user's email are different.",
+      footer: "Please verify the information",
+    });
+  } else {
+    Swal.fire({
+      position: "center",
+      icon: "info",
+      title: "We are processing your payment...",
+      showConfirmButton: false,
+      timer: 2000,
+    });
+
+    setTimeout(() => {
+      Swal.fire({
+        icon: "success",
+        title: "Success!",
+        text: "The payment was correctly processed!",
+        footer: "Thank you for your purchase!",
+      });
+    }, 3500);
+
+    fetch(serverPay, {
+        method: "POST",
+        body: JSON.stringify({
+          emailPay: email,
+          numberCard,
+          dataExp,
+          cvv,
+          detailBuy
+          
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      }).then((respond) => respond);
+      document.getElementById('sectionStatePay').innerHTML = ''
+      document.getElementById('sectionStatePay').innerHTML += 
+      ` <p class="fw-bold"> STATE: PENDING PAYMENT </p> `
+  }
+
+  formBuy.reset()
 });
